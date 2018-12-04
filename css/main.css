@@ -1494,7 +1494,7 @@ pre .javascript .function {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #000;
+  background-color: #fff;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   -moz-transform: scaleX(0);
@@ -1506,6 +1506,7 @@ pre .javascript .function {
   transition-delay: 0s;
 }
 .posts-expand .post-title-link:hover::before {
+  background-color: #000;
   visibility: visible;
   -webkit-transform: scaleX(1);
   -moz-transform: scaleX(1);
@@ -1514,7 +1515,7 @@ pre .javascript .function {
   transform: scaleX(1);
 }
 .posts-expand .post-title-link .fa {
-  font-size: 20px;
+  font-size: 25px;
   margin-left: 5px;
 }
 .posts-expand .post-meta {
@@ -1849,7 +1850,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2a6b87;
+  background: #ff55c1;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2629,4 +2630,31 @@ embed {
   color: #fc6423;
   border-bottom: none;
   border-bottom: 1px solid #fc6423;
+}
+::selection {
+  background: #4876ff;
+  color: #f7f7f7;
+}
+::-moz-selection {
+  background: #4876ff;
+  color: #f7f7f7;
+}
+.headband {
+  height: 3px;
+  background: #000;
+}
+.site-title {
+  font-size: 30px;
+  background: #fff;
+  font-family: "woa";
+}
+.brand {
+  color: #222;
+  background: #fff;
+}
+.site-title:hover {
+  background-color: #ff0;
+}
+.post-title-link {
+  font-size: 25px;
 }
