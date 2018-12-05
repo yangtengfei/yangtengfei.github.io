@@ -133,25 +133,25 @@
 
 
 
-  <meta name="description" content="效果　　输入1hexo new post 文章 自动打开编辑器，此处我的编辑器是MarkdownPad2。 操作 在源目录下创建scripts文件夹； 在该文件夹中创建一个.js文件，文件名随意； 在文件中输入123456789var spawn = require(&apos;child_process&apos;).exec;  // Hexo 2.xhexo.on(&apos;new&apos;, function(path)&amp;#">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="互斥与可见性锁提供了两种特性：互斥和可见性 互斥即为一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议。这样，一次就只有一个线程能够使用该共享资源。 可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —- 如果没有同步机制提供的这种可见性，线程看到的共享变量可能是修改前的值或不一致的值，这将引发许多严重的而问题。(竞态">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo自动打开markdown文件编辑器">
-<meta property="og:url" content="https://yangtengfei.github.io/2018/12/05/hexo自动打开markdown文件编辑器/index.html">
+<meta property="og:title" content="volatile与synchronized的区别">
+<meta property="og:url" content="https://yangtengfei.github.io/posts/undefined/index.html">
 <meta property="og:site_name" content="飞鸟集">
-<meta property="og:description" content="效果　　输入1hexo new post 文章 自动打开编辑器，此处我的编辑器是MarkdownPad2。 操作 在源目录下创建scripts文件夹； 在该文件夹中创建一个.js文件，文件名随意； 在文件中输入123456789var spawn = require(&apos;child_process&apos;).exec;  // Hexo 2.xhexo.on(&apos;new&apos;, function(path)&amp;#">
+<meta property="og:description" content="互斥与可见性锁提供了两种特性：互斥和可见性 互斥即为一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议。这样，一次就只有一个线程能够使用该共享资源。 可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —- 如果没有同步机制提供的这种可见性，线程看到的共享变量可能是修改前的值或不一致的值，这将引发许多严重的而问题。(竞态">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T06:08:03.084Z">
+<meta property="og:updated_time" content="2018-12-05T05:06:21.982Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo自动打开markdown文件编辑器">
-<meta name="twitter:description" content="效果　　输入1hexo new post 文章 自动打开编辑器，此处我的编辑器是MarkdownPad2。 操作 在源目录下创建scripts文件夹； 在该文件夹中创建一个.js文件，文件名随意； 在文件中输入123456789var spawn = require(&apos;child_process&apos;).exec;  // Hexo 2.xhexo.on(&apos;new&apos;, function(path)&amp;#">
+<meta name="twitter:title" content="volatile与synchronized的区别">
+<meta name="twitter:description" content="互斥与可见性锁提供了两种特性：互斥和可见性 互斥即为一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议。这样，一次就只有一个线程能够使用该共享资源。 可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —- 如果没有同步机制提供的这种可见性，线程看到的共享变量可能是修改前的值或不一致的值，这将引发许多严重的而问题。(竞态">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yangtengfei.github.io/2018/12/05/hexo自动打开markdown文件编辑器/">
+  <link rel="canonical" href="https://yangtengfei.github.io/posts/undefined/">
 
 
 
@@ -161,7 +161,7 @@
   };
 </script>
 
-  <title>hexo自动打开markdown文件编辑器 | 飞鸟集</title>
+  <title>volatile与synchronized的区别 | 飞鸟集</title>
   
 
 
@@ -389,7 +389,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtengfei.github.io/2018/12/05/hexo自动打开markdown文件编辑器/">
+    <link itemprop="mainEntityOfPage" href="https://yangtengfei.github.io/posts/undefined/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨腾飞">
@@ -406,7 +406,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo自动打开markdown文件编辑器
+          <h1 class="post-title" itemprop="name headline">volatile与synchronized的区别
               
             
           </h1>
@@ -431,7 +431,7 @@
                 
               
 
-              <time title="创建时间：2018-12-05 13:54:40 / 修改时间：14:08:03" itemprop="dateCreated datePublished" datetime="2018-12-05T13:54:40+08:00">2018-12-05</time>
+              <time title="创建时间：2018-12-05 12:52:51 / 修改时间：13:06:21" itemprop="dateCreated datePublished" datetime="2018-12-05T12:52:51+08:00">2018-12-05</time>
             
 
             
@@ -453,7 +453,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java多线程/" itemprop="url" rel="index"><span itemprop="name">Java多线程</span></a></span>
 
                 
                 
@@ -494,18 +494,24 @@
       
 
       
-        <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>　　输入<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type">post</span> 文章</span><br></pre></td></tr></table></figure></p>
-<p>自动打开编辑器，此处我的编辑器是MarkdownPad2。</p>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><ol>
-<li>在源目录下创建scripts文件夹；</li>
-<li>在该文件夹中创建一个.js文件，文件名随意；</li>
-<li>在文件中输入<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var spawn = require(<span class="string">'child_process'</span>).<span class="built_in">exec</span>;  </span><br><span class="line"><span class="comment">// Hexo 2.x</span></span><br><span class="line">hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span><span class="params">(path)</span>&#123;</span></span><br><span class="line">  <span class="built_in">exec</span>(<span class="string">'vi'</span>, [path]);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Hexo 3</span></span><br><span class="line">hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span><span class="params">(data)</span>&#123;</span></span><br><span class="line">  <span class="built_in">exec</span>(<span class="string">'vi'</span>, [data.path]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>注意版本和路径，如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">'child_process'</span>).exec;</span><br><span class="line">  <span class="comment">// Hexo 3 </span></span><br><span class="line">hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  spawn(<span class="string">'start  "D:\WorkPlace\MarkdownPad\MarkdownPad2.exe" '</span> + data.path);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<ol start="4">
-<li>OK!</li>
-</ol>
+        <h2 id="互斥与可见性"><a href="#互斥与可见性" class="headerlink" title="互斥与可见性"></a>互斥与可见性</h2><p>锁提供了两种特性：互斥和可见性</p>
+<p>互斥即为一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议。这样，一次就只有一个线程能够使用该共享资源。</p>
+<p>可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —- 如果没有同步机制提供的这种可见性，线程看到的共享变量可能是修改前的值或不一致的值，这将引发许多严重的而问题。(竞态条件)</p>
+<h2 id="保证数据一致性"><a href="#保证数据一致性" class="headerlink" title="保证数据一致性"></a>保证数据一致性</h2><p>在Java中，为了保证多线程读写数据时的数据一致性，可以采用两种方式：</p>
+<p>同步：如用synchronized关键字或使用锁对象；</p>
+<p>volatile关键字：用一句话概括volatile，它能够使变量在值发生改变时尽快地让其他线程知道。</p>
+<h2 id="volatile详解"><a href="#volatile详解" class="headerlink" title="volatile详解"></a>volatile详解</h2><p>首先，我们要意识到有这样的现象：<strong>编译器为了加快程序运行速度，对一些变量的写操作会现在寄存器或CPU缓存上进行，最后写入内存。</strong>而在这个过程中，变量的新值对其它线程是不可见的。</p>
+<font color="red">当对volatile标记的变量进行修改时，会将其它缓存中存储的修改前的变量清除，然后重新读取。这里从哪读尚未明确，一般来说应该是先在进行修改的缓存A中修改为新值，然后通知其它缓存清除掉此变量，当其它缓存B中的线程读取此变量时，会向总线发送消息，这是存储新值的缓存A获取到消息，将新值传给B，最后将新值写入内存。</font>
+
+<p><strong>volatile的作用是 被其修饰的变量每次刷新时，都会刷新上述步骤</strong></p>
+<p>当一个域的值依赖于它之前的值时，volatile就无法操作了，如n=n+1,n++等。如果某个域的值受其它域的值的限制，那么volatile也无法工作，如Range类的lower和upper边界，必须遵循lower&lt;=upper的限制。</p>
+<h2 id="volatile与synchronized"><a href="#volatile与synchronized" class="headerlink" title="volatile与synchronized"></a>volatile与synchronized</h2><ul>
+<li>volatile本质是告诉JVM当前变量在寄存器中的值是不确定的，需要从主存中读取。synchronized则是锁定当前变量，只有当前线程可以访问该变量，其它线程被阻塞。</li>
+<li>volatile仅能使用在变量级别，synchronized则可以使用在变量、方法。</li>
+<li>volatile仅能实现变量修改的可见性，而synchronized则可以保证变量修改的可见性和原子性。<em>《Java编程思想》上说，定义long或double时，如果使用volatile关键字(简单的赋值与返回操作)，就会获得原子性。</em></li>
+<li>volatile不会造成线程阻塞，synchronized会造成线程阻塞。</li>
+<li>使用volatile而不是synchronized的唯一安全情况是类中只有一个可变的域。</li>
+</ul>
 
       
     </div>
@@ -558,7 +564,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/java/" rel="tag"># java</a>
           
         </div>
       
@@ -631,15 +637,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/05/volatile与synchronized的区别/" rel="next" title="volatile与synchronized的区别">
-                <i class="fa fa-chevron-left"></i> volatile与synchronized的区别
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/undefined/" rel="prev" title="hexo自动打开markdown文件编辑器">
+                hexo自动打开markdown文件编辑器 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -785,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">1.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">2.</span> <span class="nav-text">操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#互斥与可见性"><span class="nav-number">1.</span> <span class="nav-text">互斥与可见性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保证数据一致性"><span class="nav-number">2.</span> <span class="nav-text">保证数据一致性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile详解"><span class="nav-number">3.</span> <span class="nav-text">volatile详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile与synchronized"><span class="nav-number">4.</span> <span class="nav-text">volatile与synchronized</span></a></li></ol></div>
             
 
           </div>
@@ -981,7 +987,7 @@
   
     <script type="text/javascript">
       window.livereOptions = {
-        refer: '2018/12/05/hexo自动打开markdown文件编辑器/'
+        refer: 'posts/undefined/'
       };
       (function(d, s) {
         var j, e = d.getElementsByTagName(s)[0];

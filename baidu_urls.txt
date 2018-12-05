@@ -1,2 +1,2 @@
-https://yangtengfei.github.io/2018/12/05/hexo自动打开markdown文件编辑器/
-https://yangtengfei.github.io/2018/12/05/volatile与synchronized的区别/
+https://yangtengfei.github.io/posts/undefined/
+https://yangtengfei.github.io/posts/undefined/
