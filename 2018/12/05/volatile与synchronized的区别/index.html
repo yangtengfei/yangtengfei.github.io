@@ -127,24 +127,25 @@
 
 
 
-  <meta name="description" content="杨腾飞">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="https://yangtengfei.github.io/about/index.html">
+  <meta name="description" content="锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。 可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —— 如果没有同步机制提供的这种可见性保证，线程看到的共享">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="volatile与synchronized的区别">
+<meta property="og:url" content="https://yangtengfei.github.io/2018/12/05/volatile与synchronized的区别/index.html">
 <meta property="og:site_name" content="飞鸟集">
-<meta property="og:description" content="杨腾飞">
+<meta property="og:description" content="锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。 可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —— 如果没有同步机制提供的这种可见性保证，线程看到的共享">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-04T10:24:46.564Z">
+<meta property="og:updated_time" content="2018-12-05T02:59:21.555Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="杨腾飞">
+<meta name="twitter:title" content="volatile与synchronized的区别">
+<meta name="twitter:description" content="锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。 可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —— 如果没有同步机制提供的这种可见性保证，线程看到的共享">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yangtengfei.github.io/about/">
+  <link rel="canonical" href="https://yangtengfei.github.io/2018/12/05/volatile与synchronized的区别/">
 
 
 
@@ -154,7 +155,7 @@
   };
 </script>
 
-  <title>关于我 | 飞鸟集</title>
+  <title>volatile与synchronized的区别 | 飞鸟集</title>
   
 
 
@@ -269,7 +270,7 @@
         
         
           
-          <li class="menu-item menu-item-about menu-item-active">
+          <li class="menu-item menu-item-about">
 
     
     
@@ -342,28 +343,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -390,44 +369,196 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yangtengfei.github.io/2018/12/05/volatile与synchronized的区别/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨腾飞">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="飞鸟集">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">关于我</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>杨腾飞</p>
-
+          <h1 class="post-title" itemprop="name headline">volatile与synchronized的区别
+              
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-05 10:49:25 / 修改时间：10:59:21" itemprop="dateCreated datePublished" datetime="2018-12-05T10:49:25+08:00">2018-12-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="锁提供了两种主要特性：互斥（mutual-exclusion）-和可见性（visibility）"><a href="#锁提供了两种主要特性：互斥（mutual-exclusion）-和可见性（visibility）" class="headerlink" title="锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）"></a>锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）</h2><p>互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。</p>
+<p>可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —— 如果没有同步机制提供的这种可见性保证，线程看到的共享         变量可能是修改前的值或不一致的值，这将引发许多严重问题。（竞态条件）</p>
+<h2 id="在Java中-为了保证多线程读写数据时保证数据的一致性-可以采用两种方式"><a href="#在Java中-为了保证多线程读写数据时保证数据的一致性-可以采用两种方式" class="headerlink" title="在Java中,为了保证多线程读写数据时保证数据的一致性,可以采用两种方式"></a>在Java中,为了保证多线程读写数据时保证数据的一致性,可以采用两种方式</h2><p>同步：如用synchronized关键字,或者使用锁对象<br>使用volatile关键字：用一句话概括volatile,它能够使变量在值发生改变时能尽快地让其他线程知道</p>
+<h2 id="volatile详解"><a href="#volatile详解" class="headerlink" title="volatile详解"></a>volatile详解</h2><p>首先我们要先意识到有这样的现象,编译器为了加快程序运行的速度,对一些变量的写操作会先在寄存器或者是CPU缓存上进行,最后才写入内存.</p>
+<p>而在这个过程中,变量的新值对其他线程是不可见的.</p>
+<p><font color="#FF0000">红色</font></p>
+<p><font color="#FF0000">当对volatile标记的变量进行修改时，会将其他缓存中存储的修改前的变量清除，然后重新读取。这里从哪读取我并不明确，一般来说应该是先在进行修改的缓存A中修改为新值，然后通知其他缓存清除掉此变量，当其他缓存B中的线程读取此变量时，会向总线发送消息，这时存储新值的缓存A获取到消息，将新值穿给B。最后将新值写入内存。</font> 当变量需要更新时都是此步骤，volatile的作用是被其修饰的变量，每次更新时，都会刷新上述步骤。</p>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>打赏支持一下！您的支持将鼓励我继续创作！！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="杨腾飞 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="杨腾飞 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/05/auto-open-test/" rel="next" title="auto_open_test">
+                <i class="fa fa-chevron-left"></i> auto_open_test
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -462,8 +593,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -539,6 +679,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#锁提供了两种主要特性：互斥（mutual-exclusion）-和可见性（visibility）"><span class="nav-number">1.</span> <span class="nav-text">锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Java中-为了保证多线程读写数据时保证数据的一致性-可以采用两种方式"><span class="nav-number">2.</span> <span class="nav-text">在Java中,为了保证多线程读写数据时保证数据的一致性,可以采用两种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile详解"><span class="nav-number">3.</span> <span class="nav-text">volatile详解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -711,7 +867,7 @@
   
     <script type="text/javascript">
       window.livereOptions = {
-        refer: 'about/index.html'
+        refer: '2018/12/05/volatile与synchronized的区别/'
       };
       (function(d, s) {
         var j, e = d.getElementsByTagName(s)[0];
