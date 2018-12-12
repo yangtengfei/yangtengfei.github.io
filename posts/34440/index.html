@@ -133,25 +133,24 @@
 
 
 
-  <meta name="description" content="1. 互斥与可见性锁提供了两种特性：互斥和可见性 互斥即为一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议。这样，一次就只有一个线程能够使用该共享资源。 可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —- 如果没有同步机制提供的这种可见性，线程看到的共享变量可能是修改前的值或不一致的值，这将引发许多严重的而问题。">
-<meta name="keywords" content="java">
+  <meta name="description" content="1. 概述1.1 定义：由一个工厂对象决定创建出哪一种产品类型的实例1.2 类型：创建型，但不属于GOF23种设计模式。1.3 适用场景：        1.3.1 工厂类负责创建的对象比较少    1.3.2 客户端（应用层）只传入工厂类的参数，对于如何创建对象（逻辑）不关心1.4 优点：只需要传入一个正确的参数，就可以获取所需要的对象，无须知道创建细节。1.5 缺点：工厂类的职责相对过重，增加">
 <meta property="og:type" content="article">
-<meta property="og:title" content="volatile与synchronized的区别">
-<meta property="og:url" content="https://yangtengfei.github.io/posts/35829/index.html">
+<meta property="og:title" content="简单工厂">
+<meta property="og:url" content="https://yangtengfei.github.io/posts/34440/index.html">
 <meta property="og:site_name" content="飞鸟集">
-<meta property="og:description" content="1. 互斥与可见性锁提供了两种特性：互斥和可见性 互斥即为一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议。这样，一次就只有一个线程能够使用该共享资源。 可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —- 如果没有同步机制提供的这种可见性，线程看到的共享变量可能是修改前的值或不一致的值，这将引发许多严重的而问题。">
+<meta property="og:description" content="1. 概述1.1 定义：由一个工厂对象决定创建出哪一种产品类型的实例1.2 类型：创建型，但不属于GOF23种设计模式。1.3 适用场景：        1.3.1 工厂类负责创建的对象比较少    1.3.2 客户端（应用层）只传入工厂类的参数，对于如何创建对象（逻辑）不关心1.4 优点：只需要传入一个正确的参数，就可以获取所需要的对象，无须知道创建细节。1.5 缺点：工厂类的职责相对过重，增加">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-06T11:21:40.494Z">
+<meta property="og:updated_time" content="2018-12-12T07:21:47.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="volatile与synchronized的区别">
-<meta name="twitter:description" content="1. 互斥与可见性锁提供了两种特性：互斥和可见性 互斥即为一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议。这样，一次就只有一个线程能够使用该共享资源。 可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —- 如果没有同步机制提供的这种可见性，线程看到的共享变量可能是修改前的值或不一致的值，这将引发许多严重的而问题。">
+<meta name="twitter:title" content="简单工厂">
+<meta name="twitter:description" content="1. 概述1.1 定义：由一个工厂对象决定创建出哪一种产品类型的实例1.2 类型：创建型，但不属于GOF23种设计模式。1.3 适用场景：        1.3.1 工厂类负责创建的对象比较少    1.3.2 客户端（应用层）只传入工厂类的参数，对于如何创建对象（逻辑）不关心1.4 优点：只需要传入一个正确的参数，就可以获取所需要的对象，无须知道创建细节。1.5 缺点：工厂类的职责相对过重，增加">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yangtengfei.github.io/posts/35829/">
+  <link rel="canonical" href="https://yangtengfei.github.io/posts/34440/">
 
 
 
@@ -161,7 +160,7 @@
   };
 </script>
 
-  <title>volatile与synchronized的区别 | 飞鸟集</title>
+  <title>简单工厂 | 飞鸟集</title>
   
 
 
@@ -389,7 +388,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtengfei.github.io/posts/35829/">
+    <link itemprop="mainEntityOfPage" href="https://yangtengfei.github.io/posts/34440/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨腾飞">
@@ -406,7 +405,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">volatile与synchronized的区别
+          <h1 class="post-title" itemprop="name headline">简单工厂
               
             
           </h1>
@@ -431,46 +430,16 @@
                 
               
 
-              <time title="创建时间：2018-12-05 12:52:51" itemprop="dateCreated datePublished" datetime="2018-12-05T12:52:51+08:00">2018-12-05</time>
+              <time title="创建时间：2018-12-12 15:08:49 / 修改时间：15:21:47" itemprop="dateCreated datePublished" datetime="2018-12-12T15:08:49+08:00">2018-12-12</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-06 19:21:40" itemprop="dateModified" datetime="2018-12-06T19:21:40+08:00">2018-12-06</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java多线程/" itemprop="url" rel="index"><span itemprop="name">Java多线程</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -506,24 +475,70 @@
       
 
       
-        <h2 id="1-互斥与可见性"><a href="#1-互斥与可见性" class="headerlink" title="1. 互斥与可见性"></a>1. 互斥与可见性</h2><p>锁提供了两种特性：互斥和可见性</p>
-<p>互斥即为一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议。这样，一次就只有一个线程能够使用该共享资源。</p>
-<p>可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —- 如果没有同步机制提供的这种可见性，线程看到的共享变量可能是修改前的值或不一致的值，这将引发许多严重的而问题。(竞态条件)</p>
-<h2 id="2-保证数据一致性"><a href="#2-保证数据一致性" class="headerlink" title="2. 保证数据一致性"></a>2. 保证数据一致性</h2><p>在Java中，为了保证多线程读写数据时的数据一致性，可以采用两种方式：</p>
-<p>同步：如用synchronized关键字或使用锁对象；</p>
-<p>volatile关键字：用一句话概括volatile，它能够使变量在值发生改变时尽快地让其他线程知道。</p>
-<h2 id="3-volatile详解"><a href="#3-volatile详解" class="headerlink" title="3. volatile详解"></a>3. volatile详解</h2><p>首先，我们要意识到有这样的现象：<strong>编译器为了加快程序运行速度，对一些变量的写操作会现在寄存器或CPU缓存上进行，最后写入内存。</strong>而在这个过程中，变量的新值对其它线程是不可见的。</p>
-<font color="red">当对volatile标记的变量进行修改时，会将其它缓存中存储的修改前的变量清除，然后重新读取。这里从哪读尚未明确，一般来说应该是先在进行修改的缓存A中修改为新值，然后通知其它缓存清除掉此变量，当其它缓存B中的线程读取此变量时，会向总线发送消息，这是存储新值的缓存A获取到消息，将新值传给B，最后将新值写入内存。</font>
+        <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>1.1 定义：由一个工厂对象决定创建出哪一种产品类型的实例<br>1.2 类型：创建型，但不属于GOF23种设计模式。<br>1.3 适用场景：<br>        1.3.1 工厂类负责创建的对象比较少<br>    1.3.2 客户端（应用层）只传入工厂类的参数，对于如何创建对象（逻辑）不关心<br>1.4 优点：只需要传入一个正确的参数，就可以获取所需要的对象，无须知道创建细节。<br>1.5 缺点：工厂类的职责相对过重，增加新的产品需要修改工厂类的判断逻辑，违背了开闭原则。</p>
+<h2 id="2-Code"><a href="#2-Code" class="headerlink" title="2. Code"></a>2. Code</h2><p>在该部分的代码中，包含工厂类VideoFactory，抽象类产品Video，产品JavaVideo\PythonVideo和测试类Test，测试类代表更上层的应用层。<br>2.1 抽象类Video如下：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Video</span> &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">produce</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">产品JavaVideo/PythonVideo如下：</span><br></pre></td></tr></table></figure></p>
+<p>public class JavaVideo extends Video{<br>    @Override<br>    public void produce() {<br>        System.out.println(“录制Java 课程视频”);<br>    }</p>
+<p>}</p>
+<p>public class PythonVideo extends Video{<br>    @Override<br>    public void produce() {<br>        System.out.println(“录制Python课程视频”);<br>    }</p>
+<p>}<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2<span class="selector-class">.2</span> 不使用设计模式的代码如下：</span><br></pre></td></tr></table></figure></p>
+<p>public class Test {<br>    public static void main(String[] args) {<br>        Video video = new JavaVideo();<br>        video.produce();<br>    }<br>}<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2<span class="selector-class">.3</span> 基本的简单工厂如下：  </span><br><span class="line">工厂类：<span class="selector-tag">VideoFactory</span></span><br></pre></td></tr></table></figure></p>
+<p>public class VideoFactory {<br>    public Video getVideo(String type) { // 也可以是静态方法，方便直接调用；但是不方便继承、修改<br>        if (“java”.equalsIgnoreCase(type)) {<br>            return new JavaVideo();<br>        }else if (“Python”.equalsIgnoreCase(type)) {<br>            return new PythonVideo();<br>        }<br>        return null;<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">测试如下：</span><br></pre></td></tr></table></figure></p>
+<p>public class Test {<br>    // 简单工厂<br>    public static void main(String[] args) {<br>        VideoFactory videoFactory = new VideoFactory();<br>        Video video = videoFactory.getVideo(“java”);<br>        if (video == null) {<br>            return;<br>        }<br>        video.produce();<br>    }<br>}</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2.4 为了增加扩展性，也可以*<span class="strong">*把工厂类用反射的方式写*</span><span class="strong">*，代码如下：</span></span><br></pre></td></tr></table></figure>
+<p>public class VideoFactory {<br>    // 使用反射，增加扩展性<br>    public Video getVideo(Class class1) {<br>        Video video = null;<br>        try {<br>            video = (Video)Class.forName(class1.getName()).newInstance();<br>        } catch (Exception e) {<br>            System.out.println(“exception”);<br>        }<br>        return video;<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">测试代码如下：</span><br></pre></td></tr></table></figure></p>
+<p>public class Test {<br>    public static void main(String[] args) {<br>        VideoFactory videoFactory = new VideoFactory();<br>        Video video = videoFactory.getVideo(JavaVideo.class);<br>        if (video == null) {<br>            return;<br>        }<br>        video.produce();<br>    }<br>}<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 3. <span class="selector-tag">JDK</span>源码分析</span><br><span class="line">3<span class="selector-class">.1</span> 在<span class="selector-tag">java</span><span class="selector-class">.util</span><span class="selector-class">.Calendar</span>中的方法<span class="selector-tag">getInstance</span>()：<span class="selector-tag">createCalendar</span></span><br></pre></td></tr></table></figure></p>
+<pre><code>                                       Locale aLocale)
+{
+    CalendarProvider provider =
+        LocaleProviderAdapter.getAdapter(CalendarProvider.class, aLocale)
+                             .getCalendarProvider();
+    if (provider != null) {
+        try {
+            return provider.getInstance(zone, aLocale);
+        } catch (IllegalArgumentException iae) {
+            // fall back to the default instantiation
+        }
+    }
 
-<p><strong>volatile的作用是 被其修饰的变量每次刷新时，都会刷新上述步骤</strong></p>
-<p>当一个域的值依赖于它之前的值时，volatile就无法操作了，如n=n+1,n++等。如果某个域的值受其它域的值的限制，那么volatile也无法工作，如Range类的lower和upper边界，必须遵循lower&lt;=upper的限制。</p>
-<h2 id="4-volatile与synchronized"><a href="#4-volatile与synchronized" class="headerlink" title="4. volatile与synchronized"></a>4. volatile与synchronized</h2><ul>
-<li>volatile本质是告诉JVM当前变量在寄存器中的值是不确定的，需要从主存中读取。synchronized则是锁定当前变量，只有当前线程可以访问该变量，其它线程被阻塞。</li>
-<li>volatile仅能使用在变量级别，synchronized则可以使用在变量、方法。</li>
-<li>volatile仅能实现变量修改的可见性，而synchronized则可以保证变量修改的可见性和原子性。<em>《Java编程思想》上说，定义long或double时，如果使用volatile关键字(简单的赋值与返回操作)，就会获得原子性。</em></li>
-<li>volatile不会造成线程阻塞，synchronized会造成线程阻塞。</li>
-<li>使用volatile而不是synchronized的唯一安全情况是类中只有一个可变的域。</li>
-</ul>
+    Calendar cal = null;
+
+    if (aLocale.hasExtensions()) {
+        String caltype = aLocale.getUnicodeLocaleType(&quot;ca&quot;);
+        if (caltype != null) {
+            switch (caltype) {
+            case &quot;buddhist&quot;:
+            cal = new BuddhistCalendar(zone, aLocale);
+                break;
+            case &quot;japanese&quot;:
+                cal = new JapaneseImperialCalendar(zone, aLocale);
+                break;
+            case &quot;gregory&quot;:
+                cal = new GregorianCalendar(zone, aLocale);
+                break;
+            }
+        }
+    }
+    if (cal == null) {
+        // If no known calendar type is explicitly specified,
+        // perform the traditional way to create a Calendar:
+        // create a BuddhistCalendar for th_TH locale,
+        // a JapaneseImperialCalendar for ja_JP_JP locale, or
+        // a GregorianCalendar for any other locales.
+        // NOTE: The language, country and variant strings are interned.
+        if (aLocale.getLanguage() == &quot;th&quot; &amp;&amp; aLocale.getCountry() == &quot;TH&quot;) {
+            cal = new BuddhistCalendar(zone, aLocale);
+        } else if (aLocale.getVariant() == &quot;JP&quot; &amp;&amp; aLocale.getLanguage() == &quot;ja&quot;
+                   &amp;&amp; aLocale.getCountry() == &quot;JP&quot;) {
+            cal = new JapaneseImperialCalendar(zone, aLocale);
+        } else {
+            cal = new GregorianCalendar(zone, aLocale);
+        }
+    }
+    return cal;
+}
+</code></pre><p><code>`</code>    </p>
+<p>此处方法使用的是static，也就是不考虑方法的扩展性</p>
+<p>3.2 反射Class.forName()的应用在JDBC加载MySQL或Oracle驱动时使用。</p>
 
       
     </div>
@@ -573,12 +588,6 @@
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/java/" rel="tag"># java</a>
-          
-        </div>
       
 
       
@@ -649,15 +658,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/posts/undefined/" rel="next" title="[笔记]设计模式----UML类图">
+                <i class="fa fa-chevron-left"></i> [笔记]设计模式----UML类图
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/22155/" rel="prev" title="hexo自动打开markdown文件编辑器">
-                hexo自动打开markdown文件编辑器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -807,7 +816,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-互斥与可见性"><span class="nav-text">1. 互斥与可见性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-保证数据一致性"><span class="nav-text">2. 保证数据一致性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-volatile详解"><span class="nav-text">3. volatile详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-volatile与synchronized"><span class="nav-text">4. volatile与synchronized</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Code"><span class="nav-text">2. Code</span></a></li></ol></div>
             
 
           </div>
@@ -1003,7 +1012,7 @@
   
     <script type="text/javascript">
       window.livereOptions = {
-        refer: 'posts/35829/'
+        refer: 'posts/34440/'
       };
       (function(d, s) {
         var j, e = d.getElementsByTagName(s)[0];
