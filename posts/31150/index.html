@@ -133,27 +133,27 @@
 
 
 
-  <meta name="description" content="记忆 箭头方向： 从子类指向父类  定义子类时通过extends指向父类  实线继承，虚线实现  空心三角箭头：继承或实现实现-继承：is a关系，扩展目的，不虚，很结实虚线-实现：虚线代表“虚”，无实体，接口无实体  实现关联，虚线依赖  实现关联：一个类和另一个类有关联，一个类中有另一个类作为属性虚线依赖：临时用，调用时才会用  空心菱形-聚合，实心菱形-组合  菱形是盛东西的器皿(盘子)聚合">
-<meta name="keywords" content="设计模式">
+  <meta name="description" content="1. 概述&amp;emsp;&amp;emsp;1.1 定义：定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类，工厂方法让类的实例化推迟到子类中进行。&amp;emsp;&amp;emsp;1.2 类型：创建型&amp;emsp;&amp;emsp;1.3 适用场景&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;- 创建对象需要大量重复代码&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;- 客户端(应用层)不依赖于产品类实例如何">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[笔记]设计模式----UML类图">
-<meta property="og:url" content="https://yangtengfei.github.io/posts/undefined/index.html">
+<meta property="og:title" content="工厂方法模式">
+<meta property="og:url" content="https://yangtengfei.github.io/posts/31150/index.html">
 <meta property="og:site_name" content="飞鸟集">
-<meta property="og:description" content="记忆 箭头方向： 从子类指向父类  定义子类时通过extends指向父类  实线继承，虚线实现  空心三角箭头：继承或实现实现-继承：is a关系，扩展目的，不虚，很结实虚线-实现：虚线代表“虚”，无实体，接口无实体  实现关联，虚线依赖  实现关联：一个类和另一个类有关联，一个类中有另一个类作为属性虚线依赖：临时用，调用时才会用  空心菱形-聚合，实心菱形-组合  菱形是盛东西的器皿(盘子)聚合">
+<meta property="og:description" content="1. 概述&amp;emsp;&amp;emsp;1.1 定义：定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类，工厂方法让类的实例化推迟到子类中进行。&amp;emsp;&amp;emsp;1.2 类型：创建型&amp;emsp;&amp;emsp;1.3 适用场景&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;- 创建对象需要大量重复代码&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;- 客户端(应用层)不依赖于产品类实例如何">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4059305-6e84a78b4ff3ce2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-12-07T08:28:06.137Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4059305-e420d291c8727f22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4059305-b88bc7fe00ebc2cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-25T03:25:12.505Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[笔记]设计模式----UML类图">
-<meta name="twitter:description" content="记忆 箭头方向： 从子类指向父类  定义子类时通过extends指向父类  实线继承，虚线实现  空心三角箭头：继承或实现实现-继承：is a关系，扩展目的，不虚，很结实虚线-实现：虚线代表“虚”，无实体，接口无实体  实现关联，虚线依赖  实现关联：一个类和另一个类有关联，一个类中有另一个类作为属性虚线依赖：临时用，调用时才会用  空心菱形-聚合，实心菱形-组合  菱形是盛东西的器皿(盘子)聚合">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4059305-6e84a78b4ff3ce2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="工厂方法模式">
+<meta name="twitter:description" content="1. 概述&amp;emsp;&amp;emsp;1.1 定义：定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类，工厂方法让类的实例化推迟到子类中进行。&amp;emsp;&amp;emsp;1.2 类型：创建型&amp;emsp;&amp;emsp;1.3 适用场景&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;- 创建对象需要大量重复代码&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;- 客户端(应用层)不依赖于产品类实例如何">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4059305-e420d291c8727f22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yangtengfei.github.io/posts/undefined/">
+  <link rel="canonical" href="https://yangtengfei.github.io/posts/31150/">
 
 
 
@@ -163,7 +163,7 @@
   };
 </script>
 
-  <title>[笔记]设计模式----UML类图 | 飞鸟集</title>
+  <title>工厂方法模式 | 飞鸟集</title>
   
 
 
@@ -391,7 +391,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtengfei.github.io/posts/undefined/">
+    <link itemprop="mainEntityOfPage" href="https://yangtengfei.github.io/posts/31150/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨腾飞">
@@ -408,7 +408,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[笔记]设计模式----UML类图
+          <h1 class="post-title" itemprop="name headline">工厂方法模式
               
             
           </h1>
@@ -433,13 +433,9 @@
                 
               
 
-              <time title="创建时间：2018-12-07 15:39:53 / 修改时间：16:28:06" itemprop="dateCreated datePublished" datetime="2018-12-07T15:39:53+08:00">2018-12-07</time>
+              <time title="创建时间：2018-12-25 11:25:12" itemprop="dateCreated datePublished" datetime="2018-12-25T11:25:12+08:00">2018-12-25</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -478,29 +474,18 @@
       
 
       
-        <h3 id="记忆"><a href="#记忆" class="headerlink" title="记忆"></a>记忆</h3><blockquote>
-<p>箭头方向： 从子类指向父类</p>
-</blockquote>
-<p>定义子类时通过extends指向父类</p>
-<blockquote>
-<p>实线继承，虚线实现</p>
-</blockquote>
-<p>空心三角箭头：继承或实现<br>实现-继承：is a关系，扩展目的，不虚，很结实<br>虚线-实现：虚线代表“虚”，无实体，接口无实体</p>
-<blockquote>
-<p>实现关联，虚线依赖</p>
-</blockquote>
-<p>实现关联：一个类和另一个类有关联，一个类中有另一个类作为属性<br>虚线依赖：临时用，调用时才会用</p>
-<blockquote>
-<p>空心菱形-聚合，实心菱形-组合</p>
-</blockquote>
-<p>菱形是盛东西的器皿(盘子)<br>聚合：空器皿里放很多相同的东西，聚在一起。大雁与大雁群<br>组合：满器皿里有很多实体结构的存在。大雁与翅膀</p>
-<h3 id="类图中类名表示："><a href="#类图中类名表示：" class="headerlink" title="类图中类名表示："></a>类图中类名表示：</h3><blockquote>
-<p>抽象类： 斜体</p>
-</blockquote>
-<h3 id="类图中权限的表示："><a href="#类图中权限的表示：" class="headerlink" title="类图中权限的表示："></a>类图中权限的表示：</h3><blockquote>
-<p>+ public<br>- private<br># protected<br>~ default<br>_(下划线) static<br>斜体： 抽象</p>
-</blockquote>
-<h3 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h3><p><img src="https://upload-images.jianshu.io/upload_images/4059305-6e84a78b4ff3ce2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3e15c8473a520a33e354702521095f0.png"></p>
+        <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>&emsp;&emsp;1.1 定义：定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类，<strong>工厂方法让类的实例化推迟到子类中进行</strong>。<br>&emsp;&emsp;1.2 类型：创建型<br>&emsp;&emsp;1.3 适用场景<br>&emsp;&emsp;&emsp;&emsp;- 创建对象需要大量重复代码<br>&emsp;&emsp;&emsp;&emsp;- 客户端(应用层)不依赖于产品类实例如何被创建、实现等细节<br>&emsp;&emsp;&emsp;&emsp;- 一个类通过其子类来指定创建哪个对象  </p>
+<p>&emsp;&emsp;1.4 优点：<br>&emsp;&emsp;&emsp;&emsp;- 用户只需要关心所需要产品对应的工厂，无须关心创建细节<br>&emsp;&emsp;&emsp;&emsp;- 加入新产品符合开闭原则，提高可扩展性</p>
+<p>&emsp;&emsp;1.5 缺点：<br>&emsp;&emsp;&emsp;&emsp;- 类的个数容易过多，增加复杂度<br>&emsp;&emsp;&emsp;&emsp;- 增加了系统的抽象性和理解难度</p>
+<h2 id="2-Code"><a href="#2-Code" class="headerlink" title="2. Code"></a>2. Code</h2><p>在该部分的代码中，包含抽象工厂类VideoFactory，抽象类产品Video，子工厂类：JavaVideoFactory/PythonVideoFactory，产品JavaVideo\PythonVideo和测试类Test，测试类代表更上层的应用层。  各类代码依次如下：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只定义规范，不决定产生哪一种类的视频</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">VideoFactory</span> &#123; </span><br><span class="line">	<span class="comment">// 此处也可以用接口。在实际的应用中，类有可能对于某些行为或属性是已知的。</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Video <span class="title">getVideo</span>(<span class="params"></span>)</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>VideoFactory定义了工厂规范，具体工厂的具体实现由其子类进行<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">JavaVideoFactory</span> <span class="keyword">extends</span> <span class="title">VideoFactory</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	public <span class="type">Video</span> getVideo() &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="type">JavaVideo</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">PythonVideoFactory</span> <span class="keyword">extends</span> <span class="title">VideoFactory</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	public <span class="type">Video</span> getVideo() &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="type">PythonVideo</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同简单工厂和此处的VideoFactory一样，工厂方法的Video也为抽象，并且由其子类进行产品的具体实现。<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Video</span> </span>&#123;</span><br><span class="line">	public <span class="keyword">abstract</span> void produce();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">JavaVideo</span> <span class="keyword">extends</span> <span class="title">Video</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	public void produce() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"录制Java 课程视频"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">PythonVideo</span> <span class="keyword">extends</span> <span class="title">Video</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	public void produce() &#123;</span><br><span class="line">		<span class="type">System</span>.out.println(<span class="string">"录制Python课程视频"</span>);	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>测试<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; <span class="comment">// 产品等级、产品族</span></span><br><span class="line">		VideoFactory videoFactory = <span class="keyword">new</span> JavaVideoFactory();</span><br><span class="line">		Video video = videoFactory.getVideo();</span><br><span class="line">		video.produce();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>相对于简单工厂，工厂方法模式使工厂类更加抽象，有利于具体工厂类的扩展。</p>
+<h2 id="3-类图"><a href="#3-类图" class="headerlink" title="3. 类图"></a>3. 类图</h2><p>上述工厂方法的类图如下：<br><img src="https://upload-images.jianshu.io/upload_images/4059305-e420d291c8727f22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="514e6f50a7be116187672ea86980190.png"></p>
+<h2 id="4-记忆方式"><a href="#4-记忆方式" class="headerlink" title="4. 记忆方式"></a>4. 记忆方式</h2><p><img src="https://upload-images.jianshu.io/upload_images/4059305-b88bc7fe00ebc2cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="5-源码分析"><a href="#5-源码分析" class="headerlink" title="5. 源码分析"></a>5. 源码分析</h2><p>在JDK源码中，Collection相当于工厂，Iterator相当于产品，它们都是接口。<br>ArrayList实现了Collection接口，相当于具体工厂；在ArrayList类中有一个内部类Itr实现了Iterator接口，该内部类相当于具体产品。具体工厂生成具体产品的方法为iterator()。源码如下所示：<br>Collection接口中的iterator()方法，是一个工厂的方法：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public<span class="built_in"> interface </span>Collection&lt;E&gt; extends Iterable&lt;E&gt; &#123;</span><br><span class="line">	<span class="built_in">..</span>. <span class="built_in">..</span>.</span><br><span class="line">	Iterator&lt;E&gt; iterator();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于上述方法的实现可以举例ArrayList类的iterator()方法,在该方法中使用内部类具体实现，内部类实现了Iterator接口(产品)：<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">ArrayList&lt;E&gt;</span> <span class="keyword">extends</span> <span class="title">AbstractList&lt;E&gt;</span></span></span><br><span class="line"><span class="class">        <span class="title">implements</span> <span class="title">List&lt;E&gt;</span>, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	... ...</span><br><span class="line">	public <span class="type">Iterator</span>&lt;<span class="type">E</span>&gt; iterator() &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="type">Itr</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** </span></span><br><span class="line"><span class="comment">	* An optimized version of AbstractList.Itr</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="title">implements</span> <span class="title">Iterator&lt;E&gt;</span> </span>&#123;</span><br><span class="line">	... ...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -550,12 +535,6 @@
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
-          
-        </div>
       
 
       
@@ -626,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/31868/" rel="next" title="Java反射">
-                <i class="fa fa-chevron-left"></i> Java反射
+              <a href="/posts/34440/" rel="next" title="简单工厂">
+                <i class="fa fa-chevron-left"></i> 简单工厂
               </a>
             
           </div>
@@ -635,10 +614,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/34440/" rel="prev" title="简单工厂">
-                简单工厂 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -788,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#记忆"><span class="nav-text">记忆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类图中类名表示："><span class="nav-text">类图中类名表示：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类图中权限的表示："><span class="nav-text">类图中权限的表示：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举例："><span class="nav-text">举例：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Code"><span class="nav-text">2. Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-类图"><span class="nav-text">3. 类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-记忆方式"><span class="nav-text">4. 记忆方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-源码分析"><span class="nav-text">5. 源码分析</span></a></li></ol></div>
             
 
           </div>
@@ -984,7 +959,7 @@
   
     <script type="text/javascript">
       window.livereOptions = {
-        refer: 'posts/undefined/'
+        refer: 'posts/31150/'
       };
       (function(d, s) {
         var j, e = d.getElementsByTagName(s)[0];
